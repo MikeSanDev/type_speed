@@ -1,4 +1,4 @@
-### Type Speed Test
+# Type Speed Test
 
 A simple typing speed test made with Python. 
 
