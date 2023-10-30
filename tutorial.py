@@ -17,10 +17,17 @@ def wpm_test(stdscr):
     target_text = 'Hello world this is a test'  # first string that gets shown
     current_text = []
 
-    stdscr.clear()  # clears
-    stdscr.addstr(target_text)  # adds string
-    stdscr.refresh()  # refreshes screen# program does'nt immediately close, it needs an interaction from the user
-    stdscr.getkey()
+    while True:
+        key = stdscr.getkey()
+        current_text.append(key)
+
+        stdscr.clear()  # clears
+        stdscr.addstr(target_text)  # adds string
+
+        for char in current_text:
+            stdscr.addstr(char, curses.color_pair(1))
+
+            stdscr.refresh()  # refreshes screen# program does'nt immediately close, it needs an interaction from the user
 
 
 def main(stdscr):
@@ -31,7 +38,6 @@ def main(stdscr):
     # function is called to show Press any key text
     start_screen(stdscr)
     wpm_test(stdscr)
-
 
     # wrapper is a function, will print out hello world
 wrapper(main)
