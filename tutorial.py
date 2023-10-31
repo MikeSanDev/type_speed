@@ -18,16 +18,20 @@ def wpm_test(stdscr):
     current_text = []
 
     while True:
-        key = stdscr.getkey()
-        current_text.append(key)
-
         stdscr.clear()  # clears
         stdscr.addstr(target_text)  # adds string
 
         for char in current_text:
             stdscr.addstr(char, curses.color_pair(1))
 
-            stdscr.refresh()  # refreshes screen# program does'nt immediately close, it needs an interaction from the user
+        stdscr.refresh()  # refreshes screen# program does'nt immediately close, it needs an interaction from the user
+
+        key = stdscr.getkey()
+
+        if ord(key) == 27:  # 27 is the ASCII character for esc
+            break
+
+        current_text.append(key)
 
 
 def main(stdscr):
