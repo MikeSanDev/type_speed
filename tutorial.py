@@ -30,8 +30,11 @@ def wpm_test(stdscr):
 
         if ord(key) == 27:  # 27 is the ASCII character for esc
             break
-
-        current_text.append(key)
+        if key in ("KEY_BACKSPACE", '\b', '\x7f'):
+            if len(current_text) > 0:
+                current_text.pop()
+        else:
+            current_text.append(key)
 
 
 def main(stdscr):
