@@ -4,6 +4,8 @@ from curses import wrapper
 
 # variable, stdscr = standard output screen
 
+# START SCREEN
+
 
 def start_screen(stdscr):
     stdscr.clear()  # clears
@@ -13,9 +15,22 @@ def start_screen(stdscr):
     stdscr.getkey()
 
 
+# OVER LAYING TEXT
+# these are the parameters, wpm is an optional parameter and will default to 0 if none is specified
+def display_text(stdscr, target, current_text, wpm=0):
+    stdscr.addstr(target)  # adds string
+
+    # enumerate will get us the element from current_text as well as the index (i) in the list
+    for i, char in enumerate(current_text):
+        # this will overlayed on top of the target text - starting with the index 0
+        stdscr.addstr(0, i, char, curses.color_pair(1))
+
+# USER KEY PRESSES
+
+
 def wpm_test(stdscr):
     target_text = 'Hello world this is a test'  # first string that gets shown
-    current_text = []
+    current_text = []  # keeps track of all keys that have been pressed
 
     while True:
         stdscr.clear()  # clears
@@ -30,11 +45,14 @@ def wpm_test(stdscr):
 
         if ord(key) == 27:  # 27 is the ASCII character for esc
             break
+        # if key is back space and other keys then it will pop off last key in current text
         if key in ("KEY_BACKSPACE", '\b', '\x7f'):
             if len(current_text) > 0:
-                current_text.pop()
+                current_text.pop()  # much easier to pop values off in a list vs an array
         else:
             current_text.append(key)
+
+# TEXT STYLING
 
 
 def main(stdscr):
