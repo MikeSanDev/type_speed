@@ -17,13 +17,18 @@ def start_screen(stdscr):
 
 # OVER LAYING TEXT
 # these are the parameters, wpm is an optional parameter and will default to 0 if none is specified
-def display_text(stdscr, target, current_text, wpm=0):
+def display_text(stdscr, target, current, wpm=0):
     stdscr.addstr(target)  # adds string
 
     # enumerate will get us the element from current_text as well as the index (i) in the list
-    for i, char in enumerate(current_text):
+    for i, char in enumerate(current):
+        correct_char = target[i]
+        color = curses.color_pair(1)  # if correct, will turn green
+        if char != correct_char:
+            color = curses.color_pair(2)  # if incorrect, will turn red
+
         # this will overlayed on top of the target text - starting with the index 0
-        stdscr.addstr(0, i, char, curses.color_pair(1))
+        stdscr.addstr(0, i, char, color)
 
 # USER KEY PRESSES
 
@@ -34,11 +39,7 @@ def wpm_test(stdscr):
 
     while True:
         stdscr.clear()  # clears
-        stdscr.addstr(target_text)  # adds string
-
-        for char in current_text:
-            stdscr.addstr(char, curses.color_pair(1))
-
+        display_text(stdscr, target_text, current_text)
         stdscr.refresh()  # refreshes screen# program does'nt immediately close, it needs an interaction from the user
 
         key = stdscr.getkey()
@@ -63,6 +64,7 @@ def main(stdscr):
     # function is called to show Press any key text
     start_screen(stdscr)
     wpm_test(stdscr)
+
 
     # wrapper is a function, will print out hello world
 wrapper(main)
