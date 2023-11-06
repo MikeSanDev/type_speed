@@ -50,7 +50,7 @@ def wpm_test(stdscr):
         if key in ("KEY_BACKSPACE", '\b', '\x7f'):
             if len(current_text) > 0:
                 current_text.pop()  # much easier to pop values off in a list vs an array
-        else:
+        elif len(current_text) < len(target_text):
             current_text.append(key)
 
 # TEXT STYLING
