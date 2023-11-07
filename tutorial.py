@@ -36,8 +36,12 @@ def display_text(stdscr, target, current, wpm=0):
 def wpm_test(stdscr):
     target_text = 'Hello world this is a test'  # first string that gets shown
     current_text = []  # keeps track of all keys that have been pressed
+    wpm = 0
+    start_time = time.time()
 
     while True:
+        time_elapsed = time.time() - start_time
+
         stdscr.clear()  # clears
         display_text(stdscr, target_text, current_text)
         stdscr.refresh()  # refreshes screen# program does'nt immediately close, it needs an interaction from the user
