@@ -40,7 +40,8 @@ def wpm_test(stdscr):
     start_time = time.time()
 
     while True:
-        time_elapsed = time.time() - start_time
+        time_elapsed = max(time.time() - start_time, 1)
+        wpm = len(current_text) / (time_elapsed / 60)  # characters per minute
 
         stdscr.clear()  # clears
         display_text(stdscr, target_text, current_text)
@@ -68,7 +69,6 @@ def main(stdscr):
     # function is called to show Press any key text
     start_screen(stdscr)
     wpm_test(stdscr)
-
 
     # wrapper is a function, will print out hello world
 wrapper(main)
