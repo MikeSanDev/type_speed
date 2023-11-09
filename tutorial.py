@@ -1,7 +1,7 @@
 import curses
 # Wrapper initializes curses, and when program is done, it will reset everything back to original state
 from curses import wrapper
-
+import time
 # variable, stdscr = standard output screen
 
 # START SCREEN
@@ -41,10 +41,13 @@ def wpm_test(stdscr):
 
     while True:
         time_elapsed = max(time.time() - start_time, 1)
-        wpm = len(current_text) / (time_elapsed / 60)  # characters per minute
+        # characters per minute
+        wpm = round((len(current_text) / (time_elapsed / 60)) / 5)
 
         stdscr.clear()  # clears
-        display_text(stdscr, target_text, current_text)
+        display_text(stdscr, target_text, current_text, )
+
+        stdscr.addstr(curses.LINES - 1, 0, f'WPM: {wpm}', curses.color_pair(3))
         stdscr.refresh()  # refreshes screen# program does'nt immediately close, it needs an interaction from the user
 
         key = stdscr.getkey()
