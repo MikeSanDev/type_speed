@@ -38,11 +38,19 @@ def wpm_test(stdscr):
     current_text = []  # keeps track of all keys that have been pressed
     wpm = 0
     start_time = time.time()
+    stdscr.nodelay(True)
 
     while True:
         time_elapsed = max(time.time() - start_time, 1)
         # characters per minute
         wpm = round((len(current_text) / (time_elapsed / 60)) / 5)
+
+        # example: 30 chars 15 seconds
+        # 15 sec / 60 sec = 0.25
+        # 30 chars / 0.25 = 120 characters per minute
+
+        # character/minute / 5 = words per minute (WPM)
+        # used round function to round up WPM
 
         stdscr.clear()  # clears
         display_text(stdscr, target_text, current_text, )
@@ -50,7 +58,10 @@ def wpm_test(stdscr):
         stdscr.addstr(curses.LINES - 1, 0, f'WPM: {wpm}', curses.color_pair(3))
         stdscr.refresh()  # refreshes screen# program does'nt immediately close, it needs an interaction from the user
 
-        key = stdscr.getkey()
+        try:  # app wont crash if the user does not type anything
+            key = stdscr.getkey()
+        except:
+            continue  # brings back to the while loop
 
         if ord(key) == 27:  # 27 is the ASCII character for esc
             break
@@ -72,6 +83,7 @@ def main(stdscr):
     # function is called to show Press any key text
     start_screen(stdscr)
     wpm_test(stdscr)
+
 
     # wrapper is a function, will print out hello world
 wrapper(main)
