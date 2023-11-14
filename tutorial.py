@@ -58,6 +58,11 @@ def wpm_test(stdscr):
         stdscr.addstr(curses.LINES - 1, 0, f'WPM: {wpm}', curses.color_pair(3))
         stdscr.refresh()  # refreshes screen# program does'nt immediately close, it needs an interaction from the user
 
+        # check if user current text is equal to target text
+        if "".join(current_text) == target_text:  # adds spaces to current_text list
+            stdscr.nodelay(False)
+            break  # breaks if nodelay is false
+
         try:  # app wont crash if the user does not type anything
             key = stdscr.getkey()
         except:
