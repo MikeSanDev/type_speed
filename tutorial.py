@@ -89,6 +89,8 @@ def main(stdscr):
     start_screen(stdscr)
     wpm_test(stdscr)
 
+    stdscr.addstr(2, 0, "You completed the test! Press any key to continue...")
+    stdscr.getkey()
 
     # wrapper is a function, will print out hello world
 wrapper(main)
