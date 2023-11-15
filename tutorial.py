@@ -87,10 +87,14 @@ def main(stdscr):
     curses.init_pair(3, curses.COLOR_WHITE, curses.COLOR_BLACK)
     # function is called to show Press any key text
     start_screen(stdscr)
-    wpm_test(stdscr)
+    while True:  # this will reset the game
+        wpm_test(stdscr)
+        stdscr.addstr(
+            2, 0, "You completed the test! Press any key to continue...")
+        key = stdscr.getkey()
 
-    stdscr.addstr(2, 0, "You completed the test! Press any key to continue...")
-    stdscr.getkey()
+        if ord(key) == 27:
+            break
 
     # wrapper is a function, will print out hello world
 wrapper(main)
