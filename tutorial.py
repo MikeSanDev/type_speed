@@ -2,6 +2,7 @@ import curses
 # Wrapper initializes curses, and when program is done, it will reset everything back to original state
 from curses import wrapper
 import time
+import random
 # variable, stdscr = standard output screen
 
 # START SCREEN
@@ -29,6 +30,11 @@ def display_text(stdscr, target, current, wpm=0):
 
         # this will overlayed on top of the target text - starting with the index 0
         stdscr.addstr(0, i, char, color)
+
+
+# def load_text():
+#     with open("text.txt", "r") as f:
+#         lines - f.readlines()
 
 # USER KEY PRESSES
 
