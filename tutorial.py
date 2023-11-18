@@ -37,7 +37,9 @@ def display_text(stdscr, target, current, wpm=0):
 #         lines - f.readlines()
 
 # USER KEY PRESSES
-
+def load_text():
+    with open("text.txt", "r") as f:
+        lines = f.readlines()
 
 def wpm_test(stdscr):
     target_text = 'Hello world this is a test'  # first string that gets shown
