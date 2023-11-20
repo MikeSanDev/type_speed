@@ -38,11 +38,15 @@ def display_text(stdscr, target, current, wpm=0):
 
 # USER KEY PRESSES
 def load_text():
-    with open("text.txt", "r") as f:
-        lines = f.readlines()
+    with open("text.txt", "r") as f:  # this will close the txt file after opening to read the text
+        lines = f.readlines()  # gives list of all the lines in the txt file
+        # it will choose a random element in the list
+        return random.choice(lines).strip()
+        # .strip() removes the whitespace characters /n
+
 
 def wpm_test(stdscr):
-    target_text = 'Hello world this is a test'  # first string that gets shown
+    target_text = load_text()  # randomized string from the txt file
     current_text = []  # keeps track of all keys that have been pressed
     wpm = 0
     start_time = time.time()
