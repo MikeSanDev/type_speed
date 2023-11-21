@@ -4,8 +4,9 @@ A simple typing speed test made with Python.
 
 ## Features
 
+- WPM calculator starts after you start typing
 - Color changes as you type to keep you on track.
-- Color also changes to red if incorrect key is pressed, green if you are correct. 
+- Color also changes to green - if correct and red - if incorrect
 - Each text is randomized so you can practice for how every long you'd like.
 
 ## Getting Started
