@@ -14,6 +14,8 @@ A simple typing speed test made with Python.
 2. python3 tutorial.py
 3. Follow the prompt - click enter to start
 4. WPM calculator automatically starts, it will follow each character you type, revealing green - if correct and red - if incorrect
-5. Once the sentece is complete, the WMP calculator stops and determines your WPM speed
+5. Once the sentece is complete, the WPM calculator stops and determines your WPM speed
+6. Click enter to try again with a random text
+7. Click Esc to exit the program
 
 
