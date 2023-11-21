@@ -10,8 +10,10 @@ A simple typing speed test made with Python.
 
 ## Getting Started
 
-pip-env install
-python3 tutorial.py
-
+1. pip-env install
+2. python3 tutorial.py
+3. Follow the prompt - click enter to start
+4. WPM calculator automatically starts, it will follow each character you type, revealing green - if correct and red - if incorrect
+5. Once the sentece is complete, the WMP calculator stops and determines your WPM speed
 
 
